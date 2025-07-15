@@ -1,8 +1,7 @@
 name: Build and Push Backend Image
 
 on:
-  pull_request:
-    types: [closed]
+  push:   # 🔄 수정된 부분!
     branches:
       - main
 
@@ -37,8 +36,6 @@ jobs:
         IMAGE=$ECR_REGISTRY/backend-user:${TAG}
         docker build -t $IMAGE -f users/Dockerfile ./users
         docker push $IMAGE
-    
-
     
     #- name: Trigger Jenkins to update values.yaml
       #run: |
